@@ -1,21 +1,19 @@
 package com.lmy.recyclerviewtantan;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.accessibility.AccessibilityRecord;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView name;
@@ -52,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         xihuan = findViewById(R.id.xihuan);
         xiayige = findViewById(R.id.xiayige);
         adapter = new Adapter(this, nameList);
+//        adapter.setStateRestorationPolicy(PREVENT_WHEN_EMPTY);//恢复recyclerview得状态
         linearLayoutManager = new ScrollSpeedLinearLayoutManger(this);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerview.setLayoutManager(linearLayoutManager);
